@@ -1,0 +1,24 @@
+<div class="task-detail-container" *ngIf="task  ">
+    <div class="header-container">
+        <h2 class="header-title">Task detail container</h2>
+
+        <button (click)="navigateToHome()" pButton type="button" label="Home" ></button>
+    </div>
+
+
+    <div class="task-detail">
+        <p>Task description : {{task.description}}</p>
+        <div class="task-complete-status">
+            <span>   Is complete : </span>         
+            <p-toggleButton onLabel="Complete" offLabel="Uncomplete"
+          onIcon="pi pi-check" offIcon="pi pi-times" [(ngModel)]="task.completed"></p-toggleButton>
+
+        </div>
+        <div class="task-assign" *ngIf="selectedUser">
+            <span>Name : </span>
+            <p-dropdown [options]="users" [(ngModel)]="selectedUser" optionLabel="name"></p-dropdown>
+        </div>
+    </div>
+
+    <button (click)="hanldeUpdateTask()" class="save-btn" pButton type="button" label="Save" ></button>
+</div>

@@ -24,7 +24,9 @@ function randomDelay() {
   return Math.random() * 1000;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BackendService {
   storedTasks: Task[] = [
     {
@@ -36,9 +38,10 @@ export class BackendService {
     {
       id: 1,
       description: "Move the desk to the new location",
-      assigneeId: 111,
+      assigneeId: 222,
       completed: false
-    }
+    },
+
   ];
 
   storedUsers: User[] = [
@@ -105,4 +108,12 @@ export class BackendService {
 
     return of(updatedTask).pipe(delay(randomDelay()));
   }
+
+  searchTasks(searchText: string): Observable<Task[]> {
+    const results = this.storedTasks.filter(task =>
+      task.description.toLowerCase().includes(searchText.toLowerCase())
+    );
+    return of(results).pipe(delay(randomDelay()));
+  }
+ 
 }

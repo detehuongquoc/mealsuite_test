@@ -1,0 +1,14 @@
+
+.task-complete-status, .task-assign, .header-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-complete-status span, .task-assign span, .header-container h2{
+    margin-right: 10px;
+}
+
+.save-btn {
+    margin-top: 20px;
+}

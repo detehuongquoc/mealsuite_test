@@ -1,8 +1,7 @@
-<h2>Tasks</h2>
-
-<ul>
-  <li *ngFor="let t of tasks|async">
-    Task: {{t.id}}, {{t.description}}
-  </li>
-</ul>
-
+<div>
+  <router-outlet></router-outlet>
+  <p-progressSpinner
+  class="progress-spinner"
+  *ngIf="loading$ | async"
+></p-progressSpinner>
+</div>

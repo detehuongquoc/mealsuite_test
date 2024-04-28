@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {BackendService} from './backend.service';
+import { AppService } from './service/appService/app.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +9,11 @@ import {BackendService} from './backend.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tasks = this.backend.tasks();
-  users = this.backend.users();
+  loading$!: Observable<boolean>;
 
-  constructor(private backend: BackendService) {}
+  constructor(private appService : AppService) {}
+
+  ngOnInit(){
+    this.loading$ = this.appService.loading$();
+  }
 }

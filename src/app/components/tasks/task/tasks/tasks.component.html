@@ -1,0 +1,39 @@
+<div class="tasks-container">
+  <div class="header-container">
+    <h2 class="tasks-header">List of tasks</h2>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="searchText"
+      placeholder="Search"
+      (ngModelChange)="handleSearchTask()"
+    />
+    <div class="add-new-task-container">
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="newTaskDescription"
+        placeholder="New task description"
+      />
+      <button
+        (click)="addTask()"
+        pButton
+        type="button"
+        label="Add new task"
+      ></button>
+    </div>
+  </div>
+
+  <div class="list-task">
+    <div class="task" *ngFor="let task of tasks" (click)="goToDetail(task.id)">
+      <p-card>
+        <div>
+            {{ task.description }}
+        </div>
+        <div>
+            Is Complete : {{ task.completed }}
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>
